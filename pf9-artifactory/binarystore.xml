@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config version="v1">
+    <chain template="s3"/>
+    <provider type="s3" id="s3">
+        <bucketName>artifactory-data</bucketName>
+        <endpoint>http://10.128.242.92:31813</endpoint>
+        <identity>ACCESS_KEY</identity>
+        <credential>SECRET_KEY</credential>
+        <httpsOnly>false</httpsOnly>
+        <property name="s3service.disable-dns-buckets" value="true"/>
+    </provider>
+</config>

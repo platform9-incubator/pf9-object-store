@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pf9-docker-registry
+  namespace: docker-registry
+  labels:
+    name: pf9-docker-registry
+spec:
+  selector:
+    matchLabels:
+      name: pf9-docker-registry
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: pf9-docker-registry
+    spec:
+      containers:
+      - name: pf9-docker-registry
+        image: sqleejan/registry-ceph:2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+          - name: docker-registry-config
+            mountPath: /etc/docker/registry/config.yml
+            subPath: config.yml
+      volumes:
+        - name: docker-registry-config
+          configMap:
+            name: docker-registry-config
