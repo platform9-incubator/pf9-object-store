@@ -1,0 +1,9 @@
+apiVersion: ceph.rook.io/v1
+kind: CephObjectStoreUser
+metadata:
+  name: s3testuser
+  namespace: pf9-storage
+spec:
+  store: ceph-objectstore
+  displayName: "s3testuser"
+
